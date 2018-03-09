@@ -2,7 +2,7 @@
   <div id="app">
       <router-view></router-view>
 
-      <Footer/>
+      <Footer v-show="$route.meta.showFooter"/>
   </div>
 </template>
 
@@ -10,7 +10,10 @@
  import Footer from './components/FooterGuide/FooterGuide.vue'
 
 export default {
-  name: 'App',
+   mounted(){
+//  一上来就要显示地址
+     this.$store.dispatch('getaddress')
+   },
   components: {
     Footer
   }

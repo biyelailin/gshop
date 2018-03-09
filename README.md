@@ -65,3 +65,25 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   #9 slot 传递共同的部分
      共同的代码块抽取出来做一个组件，用<slot>标签抽离,name 命名书写名字，
      通过slot = name的名称来传递给别的组件，每一个组件都有的地方不进行slot标签传递
+  ###  10. 组件是否在路由组件显示，在配置路由时，配置meta：{} 中，属性名：true 或者false ，
+      在对应是否要显示的组件上 绑定执行v-show=‘$route.meta.属性名’
+      所以在路由上的配置属性都是添加到$route上
+  ###  11.静态页面登录页面如果有两种登录形式：手机登录 邮箱登录，写在一个页面上，
+       用class=‘on'的css代码来控制，可以实现单页面局部切换，例如本项目的登录页面的静态页面的设计
+  ### 12.stylus样式是一层层的，所以不要样式跨层，就不会显示了
+  ### 13.箭头返回上一级 直接用$router.back()
+  ### 14. 有正反两面的话，用数据存储数据，确定一个方向为true ，然后用事件进行更改方向，更改数据内的方向
+          实现切换
+  ### 15.封装axios，发送ajax请求的思路
+       ### axios 请求，如果是get方式，直接传路径 ，post方式：路径，对象（是post的请求体），发送的方式
+           ### 1.是暴露封装的函数，参数是url data对象 还有默认的请求方式为get
+               2.判断类型，然后在进行对对象的遍历，拼接到url上，通过Object.key(data)
+                在通过字符串拼接起来，传给url
+               3.如果不是get请求的话，在通过axios（url，{data}）
+               4.返回的是promise对象，然后通过axios.then 返回的是正确的信息 axios.catch() 返回的是错误的信息
+               5.最终返回的还是promise对象
+               6.在调用的时候也是.then 的方式，返回的直接是result=response.data
+               7.anscy await是用同步的形式，调用异步的函数
+  ### 16. $route.params 参数 在url上的变化的参数，
+  ### 17  通过获取{mapState} from vuex  在当前组件上获取属性通过computed：{...mapState(['传递state的属性名']) }
+
