@@ -26,3 +26,14 @@ export const msmCode =(phone)=>ajax('/api/sendcode',{phone})
 export  const  phoneCode =({phone,code})=>ajax('/api/login_sms',{phone,code},'POST')
 //根据会话获取用户信息
 export const userInfo = ()=>ajax('/api/userinfo')
+
+//获取商家产品
+export  const  shopGoods =()=>ajax('/goods')
+
+//获取商家评价
+export  const  shopRatings =()=>ajax('/ratings')
+
+
+//获取商家信息
+export  const  shopInfos =()=>ajax('/info')
+

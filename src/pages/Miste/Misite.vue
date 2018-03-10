@@ -13,14 +13,15 @@
       <nav class="msite_nav border-1px">
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <a href="javascript:" class="link_to_food">
+            <!--遍历数组的最外层，得到有几页-->
+            <div class="swiper-slide" v-for="(types,index) in footListArr" :key="index" >
+              <a href="javascript:" class="link_to_food" v-for="(type,index) in types " :key="index">
                 <div class="food_container">
-                  <img src="./images/nav/1.jpg">
+                  <img :src="imgBaseUrl+type.image_url">
                 </div>
-                <span>甜品饮品</span>
+                <span>{{type.title}}</span>
               </a>
-              <a href="javascript:" class="link_to_food">
+             <!-- <a href="javascript:" class="link_to_food">
                 <div class="food_container">
                   <img src="./images/nav/2.jpg">
                 </div>
@@ -111,7 +112,7 @@
                   <img src="./images/nav/2.jpg">
                 </div>
                 <span>土豪推荐</span>
-              </a>
+              </a>-->
             </div>
           </div>
           <!-- Add Pagination -->
@@ -135,22 +136,63 @@
   import HeadTop from '../../components/HeadTop/HeadTop.vue'
   import ShopList from '../../components/ShopList/ShopList.vue'
   export default {
-
+    data () {
+      return {
+        imgBaseUrl: 'https://fuss10.elemecdn.com'
+      }
+    },
     computed: {
-      ...mapState(['address'])
+      ...mapState(['address','foottypes']),
+    // 在这里一维数组变为二维数组
+       footListArr(){
+       //1.创建一个大数组
+         let footListArrs =[]
+       //2.创建一个小数组
+         let footList=[]
+       // 获取数据
+          let {foottypes} = this
+       //  3.遍历 foottypes数组，放进大数组和小数组中
+         foottypes.forEach(type=>{
+       // 4.先把小数组放进大数组
+            if(footList.length === 0){
+              footListArrs.push(footList)
+            }
+      // 5.在往小数组中放入foottypes的列表（type）
+            if(footList.length < 8){
+              footList.push(type)
+            }else{
+      // 6.放满后要在创建一个新的小数组
+              footList = []
+       //  7.把新的数组放进到大数组内部
+              footListArrs.push(footList)
+        //  8.在往小数组内部放type
+              footList.push(type)
+            }
+         })
+        // 9.最后返回大数组
+          return footListArrs
+       }
+
     },
     components:{
        HeadTop,
        ShopList
     },
     mounted(){
-   //   一上来就要轮播
-      let swiper = new Swiper('.swiper-container', {
-        loop: true,
-        pagination: {
-          el: '.swiper-pagination'
-        }
+      //    一上来就要显示食品的列表
+      this.$store.dispatch('getfoottypes',()=>{
+        // 回调函数调用调用是在数据更新完以后
+        this.$nextTick(()=>{
+          let swiper = new Swiper('.swiper-container', {
+            loop: true,
+            pagination: {
+              el: '.swiper-pagination'
+            }
+          })
+
+        })
       })
+
     }
   }
 </script>

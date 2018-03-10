@@ -85,5 +85,33 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
                6.在调用的时候也是.then 的方式，返回的直接是result=response.data
                7.anscy await是用同步的形式，调用异步的函数
   ### 16. $route.params 参数 在url上的变化的参数，
-  ### 17  通过获取{mapState} from vuex  在当前组件上获取属性通过computed：{...mapState(['传递state的属性名']) }
+  ### 17  通过获取{mapState} from vuex
+          在当前组件上获取属性通过computed：{...mapState(['传递state的属性名']) }
+  ### 18   一维数组变为二维数组
+          一维数组在不改变数据的情况下，变为二维数组，要先创建一个大数组，然后在创建小数组，
+          在遍历原有数组时，先让小数组放入到大数组内部，然后在在小数组中放置遍历的个数，
+          用小数组的长度进行限制，当满的时候在创建新的小数组，在放到大数组内部，在给小数组添加
+          个数，等个数满员时，在进行小数组长度的判断，循环这样就会变成二维数组
+ ### 19  两个数组或者对象当引用一个地址时，
+          其中一个数组或者对象引用地址改变，不会影响另一个数组或者对象
+ ### 20 回调函数监听使用
+           当某个行为执行完后，要执行回调，被告知以后，在回调中执行某些行为，这个是以回调做到了监听的功能
+ ### 21 在vue中做监听的方式为：
+         watch：{ 监视的名字 } 如果更改，传的参数是vaule值，对对应的属性更新
+        # watch: {
+               foodTypes () {// 状态发生了改变, 界面还没有变化
+                 this.$nextTick(() => { // 当前这次状态改变的界面更新一完成就调用
+                   var swiper = new Swiper('.swiper-container', {
+                     loop: true,
+                     pagination: {
+                       el: '.swiper-pagination'
+                     }
+                   })
+                 })
+               }
+             }
 
+ ### 通过数字转化为css样式，
+ 处理的思路是创建数组把次数变成css样式的属性，放入到数组中，在在标签中添加，通过遍历得到属性
+ ### 计算属性可以通过函数来设置 aaa(){ return xxx}
+ ###

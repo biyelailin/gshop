@@ -13,6 +13,8 @@ export default {
    mounted(){
 //  一上来就要显示地址
      this.$store.dispatch('getaddress')
+//     一上来就要获取当前的用户信息
+      this.$store.dispatch('getUserInfo')
    },
   components: {
     Footer

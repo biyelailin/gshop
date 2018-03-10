@@ -7,6 +7,10 @@
   import Profile from '../pages/Profile/Profile.vue'
   import Search from '../pages/Search/Search.vue'
   import Login from '../pages/Login/Login.vue'
+  import  Shop from '../pages/Shop/Shop.vue'
+  import  ShopGoods from '../pages/Shop/ShopGoods/ShopGoods.vue'
+  import  ShopInfo from '../pages/Shop/ShopInfo/ShopInfo.vue'
+  import  ShopRatings from '../pages/Shop/ShopRatings/ShopRatings.vue'
 
   Vue.use(VueRouter)
   //创建路由
@@ -47,6 +51,28 @@
        {
          path:'/',
          redirect:'/misite'
-       }
+       },
+       {
+         path:'/shop',
+         component:Shop,
+         children:[
+           {
+             path:'/shop/goods',
+             component:ShopGoods
+           },
+           {
+             path:'/shop/info',
+             component:ShopInfo
+           },
+           {
+             path:'/shop/ratings',
+             component:ShopRatings
+           },
+           {
+             path:'',//代表的是shop路径
+             redirect:'goods'
+           },
+         ]
+       },
      ]
    })

@@ -7,12 +7,12 @@
             <i class="iconfont icon-person"></i>
           </div>
           <div class="user-info">
-            <p class="user-info-top">登录/注册</p>
+            <p class="user-info-top" v-if="!userInfo.phone">{{'登录/注册' || userInfo.name}}</p>
             <p>
                 <span class="user-icon">
                   <i class="iconfont icon-shouji icon-mobile"></i>
                 </span>
-              <span class="icon-mobile-number">暂无绑定手机号</span>
+              <span class="icon-mobile-number" >{{'暂时没有手机号' || userInfo.phone}}</span>
             </p>
           </div>
           <span class="arrow">
@@ -93,9 +93,13 @@
 </template>
 <script>
   import HeadTop from '../../components/HeadTop/HeadTop.vue'
+  import {mapState} from 'vuex'
   export default {
     components:{
       HeadTop
+    },
+    computed:{
+      ...mapState(['userInfo'])
     }
   }
 </script>
