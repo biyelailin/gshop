@@ -7,12 +7,12 @@
             <i class="iconfont icon-person"></i>
           </div>
           <div class="user-info">
-            <p class="user-info-top" v-if="!userInfo.phone">{{'登录/注册' || userInfo.name}}</p>
+            <p class="user-info-top" v-if="!userInfo.phone">{{ userInfo.name||'登录/注册' }}</p>
             <p>
                 <span class="user-icon">
                   <i class="iconfont icon-shouji icon-mobile"></i>
                 </span>
-              <span class="icon-mobile-number" >{{'暂时没有手机号' || userInfo.phone}}</span>
+              <span class="icon-mobile-number"  >{{ userInfo.phone ||'暂时没有手机号' }}</span>
             </p>
           </div>
           <span class="arrow">

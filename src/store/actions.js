@@ -40,8 +40,9 @@ export default {
         let result = await userInfo()
          // let  userInfo = result.data
         console.log(userInfo.data)
-        commit(RECIEVE_USER_INFO,{userInfo:result.data})
-
+           if(result.code===0){
+             commit(RECIEVE_USER_INFO,{userInfo:result.data})
+           }
     },
 //  获取商家商品信息
       async receiveShopInfo({commit}){

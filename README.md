@@ -1,24 +1,3 @@
-# gshop
-
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 #笔记
   #1.要知道项目需求
@@ -114,4 +93,35 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  ### 通过数字转化为css样式，
  处理的思路是创建数组把次数变成css样式的属性，放入到数组中，在在标签中添加，通过遍历得到属性
  ### 计算属性可以通过函数来设置 aaa(){ return xxx}
- ###
+ ###|| && 两边表达式判断结果
+    表达式1 || 表达式2   如果表达式1 为true 直接返回 ，如果为false 看表达式二 为true返回true 为false 返回false
+    表达式1 && 表达式2   如果表达式1 位true ，在看表达式2 ，如果为false，返回false ，为true返回true
+                         如果表达式1 为 false，直接返回false
+ ### 手机登录页面的原理
+     在login.vue 中，有两种登录方式，先通过初始化显示，进入判断登录方式，知道登录的方式用if..else  方式为登录方式
+     分好类，然后在每一中登录条件中，先验证输入的内容是否合法，在通过异步请求，存储到数据库，在返回用户的信息
+     在另一种条件中，先进行内容是否合法，在发送异步请求，存储到数据库，在返回用户信息，在通过整合返回给vuex的管理
+     状态中，
+ ### 对多种 类名的管理
+      多种类名放置到数组中，在通过遍历来获取响应要显示的类名来控制样式
+ ### mock 模拟数据，并拦截ajax请求
+     使用：先安装mockjs ，在通过导入数据，在mock.mock() 参数是url 和返回的数据
+     url路径相对于服务器路由的路径，在请求中，要对应路径，返回数据是模板的数据
+ ### vue中animation标签的用法
+
+### 在vue中，<transition>标签的用法
+    <transition name ='xxx'> <div></div> <transition>
+   包裹目标标签，给transition 标签命名name ，用于css的操作样式名
+    fade-enter-active,fade-leave-active
+            transition opacity 1s
+      fade-enter,fade-leave-to
+            opacity 0
+      fade-enter-active，fade-leave-action ： 表示是进入过程和离开的过程
+             所以设置标签 transition 的样式
+       fade-enter,fade-leave-to : 表示的是刚进入和刚离开的样式
+
+
+ ### 在获得state中的数据是：如果是链式的调用 a.b.c.xxx 要在标签上加上v-if,来判断最外层的样式是否获得
+     否则会报错
+
+
